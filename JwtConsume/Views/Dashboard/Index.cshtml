@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Logged in successfully</h1>
+
+<a asp-controller="Dashboard" asp-action="GetName" class="btn btn-primary"> See your name </a>
+<h1> @TempData["message"]</h1>
+
+

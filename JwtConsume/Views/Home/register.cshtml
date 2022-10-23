@@ -1,0 +1,35 @@
+﻿@model JwtConsume.Models.Reg;
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1>Registration Form</h1>
+<hr />
+<div class="row">
+    <div>
+        <p style="color: red"> @TempData["Message"] </p>
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Registration" asp-controller="Home" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"> Username</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"> </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"> Password</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"> </span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign up" class="btn btn-primary" />
+            </div>
+            <br />
+            <div>
+                <a asp-controller="Home" asp-action="LoginUser" class="btn btn-danger">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
