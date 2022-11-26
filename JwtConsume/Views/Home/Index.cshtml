@@ -4,13 +4,14 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<h1>Login</h1>
-<hr />
+
+
 <div class="row">
-    <div>
-            <p style="color: red"> @TempData["Message"] </p>
-    </div>
-    <div class="col-md-4">
+    
+    <div class="col-md-4 text-light loginbox glasseffect">
+        <img src="~/lib/Images/BingeCircle.png" asp-append-version="true" />
+        <h2 style="color:yellow">Login</h2>
+        <p style="color: red"> @TempData["Message"] </p>
         <form asp-action="LoginUser" asp-controller="Home" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -20,9 +21,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"> Password</label>
-                <input asp-for="Password" class="form-control"  />
+                <input type="password" asp-for="Password" class="form-control"  />
                 <span asp-validation-for="Password" class="text-danger"> </span>
                 </div>
+                <hr />
                 <div class="form-group">
                     <input type="submit" value="Login" class="btn btn-primary" />
                 </div>

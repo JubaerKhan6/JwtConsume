@@ -1,0 +1,68 @@
+﻿@model IEnumerable<JwtConsume.Models.Movieget>
+
+@{
+    ViewData["Title"] = "GetMovies";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<h1 = class="text-warning">Movies</h1>
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                @* @Html.DisplayNameFor(model => model.Id)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Released)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            var imagepath = "~/lib/Images/" + item.Image;
+            <tr>
+                <td>
+                    @* @Html.DisplayFor(modelItem => item.Id)*@
+                </td>
+                <td>
+                    <img src="@imagepath" class="mini" asp-append-version='true'>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Released)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+
+                <td>
+                    <a asp-controller="Store" asp-action="BuyMovie" asp-route-id="@item.Id" class="btn btn-success"> Buy </a>
+                  
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Store" asp-action="Index2" class="btn btn-danger">Back</a>

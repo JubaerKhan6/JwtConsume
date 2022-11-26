@@ -1,0 +1,54 @@
+﻿@model IEnumerable<JwtConsume.Models.Orders>
+
+@{
+    ViewData["Title"] = "OrderHistory";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<h1 class="text-primary">Order History</h1>
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                Ordered on
+            </th>
+            <th>
+                Order Id
+            </th>
+
+            <th>
+                Total Ammount
+            </th>
+            <th>
+                No. Of Items
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalItems)
+                </td>
+               
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-danger">Back</a> 

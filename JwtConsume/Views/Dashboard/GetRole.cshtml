@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "GetRole Page";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<p align="center" class=" text-light"> Your role is </p>
+<h2 align="center" style="color: blue"> @TempData["role"] </h2>
+<a asp-controller="Dashboard" asp-action="Index" class="btn btn-danger">Back</a>

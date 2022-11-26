@@ -3886,7 +3886,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #0a58ca;
+    color: #F6CB1C;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -3904,10 +3904,11 @@ textarea.form-control-lg {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
-  isolation: isolate;
-}
+    .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+        border-color: #e9ecef #e9ecef #dee2e6;
+        isolation: isolate;
+        color: #F6CB1C
+    }
 .nav-tabs .nav-link.disabled {
   color: #6c757d;
   background-color: transparent;

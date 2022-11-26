@@ -1,0 +1,145 @@
+﻿@model IEnumerable<JwtConsume.Models.Cart>
+
+@{
+    ViewData["Title"] = "GetGames";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+@{
+    var shoka = "";
+    using (var client = new HttpClient())
+    {
+        string url2 = "https://localhost:44393/api/Auth/show-Id";
+        var a = await client.GetAsync(url2);
+        var b = await a.Content.ReadAsStringAsync();
+        var uid = Convert.ToInt16(b);
+        var host = "https://localhost:44388";
+        string url = $"{host}/api/Cart/CartCount/{uid}";
+
+        var c = await client.GetAsync(url);
+        var count = await c.Content.ReadAsStringAsync();
+        shoka = count;
+
+        if(shoka=="0"){
+            <hr />
+            <h1 class="text-warning Media3 fdin"> YOUR CART IS EMPTY! Browse the Binge store to buy your favorite products</h1>
+            <a asp-action="Index2" class="btn btn-warning">Visit Binge store</a>
+        }
+        else{
+            <table class="table text-light fdin">
+                <thead>
+                    <tr class="text-warning">
+                        <th>SL</th>
+                        <th>
+                            Product Id
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Price
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var serial = 0;
+                        @foreach (var item in Model)
+                        {
+                            serial++;
+                            <tr>
+                                <td>
+                                    @serial
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.productId)
+                                </td>
+                                <td>
+                                    @{
+                                        var imgclass = "";
+                                        if (item.productType == "Game")
+                                        {
+                                            imgclass = "miniland";
+                                        }
+                                        else
+                                        {
+                                            imgclass = "mini";
+                                        }
+
+
+                                        var imagepath = "~/lib/Images/" + item.productImage;
+                                    }
+                                    <img src=@imagepath asp-append-version="true" class="@imgclass" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.productName)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.productType)
+                                </td>
+                                <td class="text-success">
+                                    $ @Html.DisplayFor(modelItem => item.productPrice)
+                                </td>
+
+                                <td>
+
+
+                                    <a asp-controller="Store" asp-action="DeleteProduct" asp-route-id=@item.SL class="btn btn-danger" onclick="myFunction()">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    @{
+                        var totalprice = 0;
+                        using (var cl = new HttpClient())
+                        {
+                            
+                            string url3 = $"{host}/api/Cart/TotalPrice/{uid}";
+
+                            var response = await cl.GetAsync(url3);
+
+                            if (response.IsSuccessStatusCode)
+                            {
+
+                                var read = response.Content.ReadAsStringAsync().Result;
+
+
+
+                                totalprice = Convert.ToInt16(read);
+                            }
+                            else
+                            {
+                                totalprice = 0;
+                            }
+
+                        }
+                    }
+
+                </tbody>
+            </table>
+            <a asp-controller="Store" asp-action="Index2" class="btn btn-danger">Back</a>
+            <a asp-controller="Store" asp-action="ConfirmOrder" class="btn btn-warning" onclick="myFunction2()">Place Order</a>
+            <a asp-controller="Store" asp-action="DeleteCart" class="btn btn-danger" onclick="myFunction2()">Delete Cart</a>
+            <h1 class="text-success float-end">Total Price: $ @totalprice </h1>
+            <script>
+                function myFunction() {
+                    alert("Are you sure ?");
+                }
+                function myFunction2() {
+                    alert("Confirm Order?");
+                }
+            </script>
+        }
+    }
+
+}
+

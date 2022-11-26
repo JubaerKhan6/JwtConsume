@@ -1,12 +1,62 @@
-﻿
+﻿@model JwtConsume.Models.UserEdit
+
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h1>Logged in successfully</h1>
 
-<a asp-controller="Dashboard" asp-action="GetName" class="btn btn-primary"> See your name </a>
-<h1> @TempData["message"]</h1>
+<h1 style="color:blue">Profile</h1>
+@{
+    var uid = 0;
+    var uname = "";
+    var role = "";
+    string url = "https://localhost:44393/api/Auth/show-Id";
+    string url2 = "https://localhost:44393/api/Auth/show-roles";
+    string url3 = "https://localhost:44393/api/Auth/See-your-username";
+
+    using (var client = new HttpClient())
+    {
+        var c = await client.GetAsync(url);
+        var d = await c.Content.ReadAsStringAsync();
+        uid = Convert.ToInt16(d);
+        var a = await client.GetAsync(url3);
+        var b = await a.Content.ReadAsStringAsync();
+        uname = b;
+
+        var e = await client.GetAsync(url2);
+        var f = await e.Content.ReadAsStringAsync();
+        role = f;
+
+    }
+}
+<div class="row">
+
+    <div class="col-md-4 text-light loginbox glasseffect">
+        <img src="~/lib/Images/BingeCircle.png" asp-append-version="true" />
+            
+            <h3 class="text-warning">Name: @uname</h3>
+            <hr />
+            
+            <h4 class="text-light">Id: @uid</h4>
+            <br />
+           
+                 <h3 class="text-warning">Role: @role</h3>
+                 <br />
+            <div class="form-group">
+                <a asp-controller="Dashboard" asp-action="OrderHistory" asp-route-id="@uid" class="btn btn-primary"> Order History </a>
+
+            </div>
+            <br />
+        <div class="form-group">
+            <a asp-controller="Store" asp-action="Index2" class="btn btn-warning">Back to Store</a>
+
+        </div>
+
+
+
+       
+    </div>
+</div>
 
 

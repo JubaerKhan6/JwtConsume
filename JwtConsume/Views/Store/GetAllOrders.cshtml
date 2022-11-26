@@ -1,0 +1,64 @@
+﻿@model IEnumerable<JwtConsume.Models.Orders>
+
+@{
+    ViewData["Title"] = "GetAllOrders";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<h1 class="text-warning">GetAllOrders</h1>
+
+
+<table class="table text-warning">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orderedby)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalItems)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="text-light">
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orderedby)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalItems)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                   <a asp-controller="Store" asp-action="EditOrder" asp-route-id="@item.OrderId" class="btn btn-warning"> Edit </a>
+
+                    <a asp-controller="Store" asp-action="DeleteOrder" asp-route-id="@item.OrderId" class="btn btn-danger" onclick="myFunction()">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-controller="Store" asp-action="Index" class="btn btn-danger">Back</a>
+<script>
+    function myFunction() {
+        alert("Are you sure ?");
+    }
+</script>

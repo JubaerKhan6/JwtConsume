@@ -1,0 +1,70 @@
+﻿@model IEnumerable<JwtConsume.Models.Superheroes>
+
+@{
+    ViewData["Title"] = "GetHeroes";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<h1 class="text-warning">Super Heroes</h1>
+
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th class="text-warning">
+                @Html.DisplayNameFor(model => model.Powers)
+            </th>
+            <th class="text-warning">
+                Click to view Details
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var imagepath = "~/lib/Images/Supe/" + item.Image;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Powers)
+                </td>
+                <td>
+                    <a asp-controller="Store" asp-action="HeroDetails" asp-route-id="@item.Id" >
+                    <img src=@imagepath class="Tiles2" asp-append-version="true">
+                    </a>
+                </td>
+
+                
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Store" asp-action="Index2" class="btn btn-warning"> Back </a>

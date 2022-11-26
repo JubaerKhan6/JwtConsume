@@ -1,0 +1,499 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url('../lib/images/yellow.jpg');
+}
+@keyframes slideintop {
+
+    75% {
+        top: 55%;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
+
+
+@keyframes fadein {
+    0% {
+        opacity: 0%;
+    }
+
+   
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes fadein{
+    0% {opacity:0;}
+    25% {opacity :20%;}
+    50% {opacity : 40%;}
+    100% {opacity : 100%; }
+}
+
+@keyframes slideintop{
+    
+    75% {top:55%;}
+    100%{top: 50%;}
+}
+@keyframes slideinbot{
+    0% {top:700px; opacity: 0%}
+    100% {top: auto; opacity: 100%}
+}
+.dynamic {
+    animation-name: slideintop;
+    animation-duration: 1s;
+}
+.Tiles {
+    width: 320px;
+    height: 180px;
+    padding: 7px;
+}
+
+    .Tiles:hover {
+        transform: scale(1.07);
+        transition-delay: 0.1s;
+        filter: drop-shadow(0px 0px 1px rgba(256, 256, 256, 1));
+    }
+
+
+@-webkit-keyframes move {
+    0% {
+        margin-left: 0px;
+        opacity: 100%;
+    }
+
+    100% {
+        margin-left: 500px;
+        opacity: 0%;
+    }
+}
+@-webkit-keyframes move2 {
+    0% {
+        margin-left: -400px;
+        opacity: 0%;
+    }
+
+    100% {
+        margin-left: 0px;
+        opacity: 100%;
+    }
+}
+@-webkit-keyframes move3 {
+    0% {
+        margin-bottom: -400px;
+        opacity: 0%;
+    }
+
+    100% {
+        margin-bottom: 0px;
+        opacity: 100%;
+    }
+}
+
+@keyframes opac{
+    0%{
+        opacity:0%;
+    }
+    100%{
+        opacity:100%;
+    }
+}
+
+.fdin{
+    animation-name:opac;
+    animation-duration:1s;
+    animation-timing-function: ease-in;
+}
+
+.fdout {
+    animation-name: opac;
+    animation-duration: 1s;
+    animation-direction:reverse;
+    animation-timing-function: ease-out;
+}
+
+
+.Media {
+    -webkit-animation-name: move;
+    -webkit-animation-duration: 1s;
+    
+    -webkit-animation-direction: reverse;
+    -webkit-animation-timing-function: ease-out;
+  
+   
+    
+}
+
+   /* .Media:hover {
+        -webkit-animation-play-state: paused;
+    }*/
+
+.Media2 {
+    -webkit-animation-name: move2;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-direction: normal;
+    -webkit-animation-timing-function: ease-in-out;
+    overflow-x: auto;
+}
+.Media3 {
+    -webkit-animation-name: move3;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-direction: normal;
+    -webkit-animation-timing-function: ease-in-out;
+    
+}
+   /* .Media2:hover {
+        -webkit-animation-play-state: paused;
+    }*/
+
+.Tiles2 {
+    width: 180px;
+    height: 280px;
+    padding: 5px;
+}
+    .Tiles2:hover {
+        transform: scale(1.05);
+        transition-delay: 0.1s;
+        filter: drop-shadow(0px 0px 1px rgba(256, 256, 256, 1));
+    }
+
+.mini {
+    width: 45px;
+    height: 80px;
+    padding: 1.75px;
+}
+
+.Media ::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+.Media ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.Media ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+}
+
+.Brand {
+    width: 280px;
+    height: 180px;
+    padding: 5px;
+}
+.topnav {
+    position: relative;
+    
+    overflow: hidden;
+}
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 0px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: black;
+            color: #fddb0e;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+/* Centered section inside the top navigation */
+.topnav-centered a {
+    float: none;
+    position: absolute;
+    top: -25%;
+    left: 43%;
+   /* transform: translate(-50%, -50%);*/
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+    float: right;
+}
+
+/* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+@media screen and (max-width: 600px) {
+    .topnav a, .topnav-right {
+        float: none;
+        display: block;
+    }
+
+    .topnav-centered a {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+}
+.left-column {
+    width: 55%;
+    position: relative;
+}
+
+.right-column {
+    animation-name: slideinbot;
+    animation-duration: 1.03s;
+    width: 45%;
+    position: relative
+}
+.left-column img {
+    width: 300px;
+    position: relative;
+    animation-name: fadein;
+    animation-duration: 1s;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+
+
+.containerbuy {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+}
+
+.product-description {
+    border-bottom: 1px solid #E1E8EE;
+    margin-bottom: 20px;
+}
+
+    .product-description span {
+        font-size: 12px;
+        color: #358ED7;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .product-description h1 {
+        font-weight: 300;
+        font-size: 52px;
+        color: #43484D;
+        letter-spacing: -2px;
+    }
+
+    .product-description p {
+        font-size: 16px;
+        font-weight: 300;
+        color: #86939E;
+        line-height: 24px;
+    }
+
+.product-price {
+    display: flex;
+    align-items: center;
+}
+
+    .product-price span {
+        font-size: 26px;
+        font-weight: 300;
+        color: #43474D;
+        margin-right: 20px;
+    }
+
+.cart-btn {
+    display: inline-block;
+    background-color: yellow;
+    border-radius: 6px;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+}
+
+    .cart-btn:hover {
+        background-color: #64af3d;
+    }
+
+.font-big {
+    font-weight: 100;
+    font-size: 32px;
+    color: #43484D;
+    
+}
+
+.font-small {
+    font-size: 16px;
+    font-weight: 300;
+    color: #86939E;
+    
+}
+.order-left-column {
+    width: 55%;
+    position: relative;
+}
+.order-right-column {
+    animation-name: slideinbot;
+    animation-duration: 1.03s;
+    width: 65%;
+    margin-top: 60px;
+    transition: width 2s height 2s;
+    transition-delay: 0.1s;
+    transition-timing-function: ease ease-in;
+    transition-duration: 1s;
+    animation-name: slideintop, fadein;
+    animation-duration: 1s;
+}
+
+.left-column-order {
+    width: 55%;
+    position: relative;
+}
+
+
+
+.left-column-order img {
+    width: 180px;
+    position: relative;
+    animation-name: fadein;
+    animation-duration: 1s;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.miniland {
+    width: 106px;
+    height: 60px;
+    padding: 3px;
+}
+.Tiles {
+    width: 320px;
+    height: 180px;
+    padding: 7px;
+}
+.left-column2 {
+    width: 55%;
+    position: relative;
+}
+
+.right-column {
+    animation-name: slideinbot;
+    animation-duration: 1.03s;
+    width: 45%;
+    position: relative
+}
+
+.left-column2 img {
+    width: 480px;
+    height: 270px;
+    position: relative;
+    animation-name: fadein;
+    animation-duration: 1s;
+    left: 0;
+    top: 60px;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.center {
+    
+    display: flex;
+    justify-content: center;
+}
+.carasize {
+    display: flex;
+    justify-content: center;
+    width: 960px;
+    height: 405px;
+}
+
+.topnavigation {
+    
+    background-color: #e9e9e9;
+}
+
+    /* Style the links inside the navigation bar */
+    .topnavigation a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+   
+
+        /* Style the "active" element to highlight the current page */
+        .topnavigation a.active {
+            background-color: #2196F3;
+            color: white;
+        }
+
+    /* Style the search box inside the navigation bar */
+    .topnavigation input[type=text]  {
+        float: right;
+        padding: 6px;
+        border: none;
+        margin-top: 8px;
+        margin-right: 16px;
+        font-size: 17px;
+        background-color: black;
+        color: #F6CB1C;
+        width: 300px;
+        
+    }
+
+        .topnavigation input[type=text]::placeholder {
+        color: #F6CB1C;
+        opacity : 75%;
+        }
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+    .topnavigation a, .topnavigation input[type=text] {
+        float: none;
+        display: block;
+        text-align: left;
+        
+        margin: 0;
+        padding: 14px;
+    }
+
+    .topnavigation input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+.searchimg{
+    width:15%;
+}

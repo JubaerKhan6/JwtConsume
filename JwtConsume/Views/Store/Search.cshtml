@@ -1,0 +1,49 @@
+﻿@model IEnumerable<JwtConsume.Models.Search>
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<h1 class="text-warning">Search Results</h1>
+
+
+
+<div class="Media2" style="overflow-y:hidden">
+    @foreach (var item in Model) {
+
+        
+            var imagepath = "~/lib/Images/" + item.Image;
+            var imagepath2 = "~/lib/Images/Supe/" + item.Image;
+
+           if(item.Category == "Movie"){
+            <td>
+                <a asp-controller="Store" asp-action="BuyMovie" asp-route-id="@item.Id"><img src="@imagepath" class="Tiles2" asp-append-version=true> 
+                   
+                    </a>
+            </td>
+
+           }
+        else if (item.Category == "Supe")
+        {
+            <td>
+                <a asp-controller="Store" asp-action="BuyGames" asp-route-id="@item.Id"><img src="@imagepath2" class="Tiles2" asp-append-version=true></a>
+            </td>
+
+        }
+
+        else 
+            {
+                <td>
+                <a asp-controller="Store" asp-action="BuyGames" asp-route-id="@item.Id"><img src="@imagepath" class="Tiles" asp-append-version=true></a>
+                
+                </td>
+
+            }
+            
+                
+     
+   
+}
+    
+</div>

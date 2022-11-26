@@ -1,0 +1,160 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url('../lib/images/blu.jpg');
+}
+@keyframes slideinleft {
+
+    75% {
+        left: 55%;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
+@keyframes fadein {
+    0% {
+        opacity: 0%;
+    }
+
+    25% {
+        opacity: 20 %;
+    }
+
+    50% {
+        opacity: 40%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.dynamic{
+    animation-name: fadein,slideinleft;
+    animation-duration: 1s;
+}
+
+.Tiles {
+    width: 320px;
+    height: 180px;
+}
+
+    .Tiles:hover {
+        transform: scale(1.01);
+        transition-delay: 0.2s;
+        filter: drop-shadow(0px 0px 1px rgba(256, 256, 256, 1));
+    }
+
+.loginbox {
+    width: 320px;
+    height: 450px;
+    background: #ffff;
+    color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    transition: width 2s height 2s;
+    transition-delay: 0.1s;
+    transition-timing-function: ease ease-in;
+    transition-duration: 1s;
+    animation-name: slideintop, fadein;
+    animation-duration: 1s;
+}
+
+    .loginbox:hover {
+        width: 350px;
+        height: 480px;
+    }
+
+    .loginbox input {
+        width: 100%;
+        margin-bottom: 20px;
+        font-weight: bold;
+        opacity: 100%;
+    }
+
+        .loginbox input[type="text"], input[type="password"] {
+            border: none;
+            border-bottom: 1px solid #fff;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .loginbox input[type="submit"] {
+            border: none;
+            outline: none;
+            height: 40px;
+            font-size: 18px;
+        }
+
+            .loginbox input[type="submit"]:hover {
+                cursor: pointer;
+                background: #ffc107;
+                color: #000;
+            }
+
+    .loginbox img {
+        width: 40%;
+        position: absolute;
+        top: -20px;
+        left: 100px;
+    }
+
+.glasseffect {
+    background-color: rgba(0,0,256,0.25);
+    backdrop-filter: blur(9px);
+    margin: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 20px;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 20 %;
+    }
+
+    50% {
+        opacity: 40%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes slideintop {
+
+    75% {
+        top: 55%;
+    }
+
+    100% {
+        top: 50%;
+    }
+}

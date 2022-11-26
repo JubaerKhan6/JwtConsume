@@ -14,5 +14,113 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url('../lib/images/red.jpg');
+    
 }
+.loginbox{
+    width:320px;
+    height:470px;
+    background: #ffff;
+    color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    transition: width 2s height 2s;
+    transition-delay : 0.1s;
+    transition-timing-function: ease ease-in;
+    transition-duration: 1s;
+    animation-name:slideintop, fadein;
+    
+    animation-duration: 1s;
+   
+
+}
+
+.loginbox:hover{
+    width: 350px;
+    height: 480px;
+}
+
+.loginbox input{
+    width: 100%;
+    margin-bottom :20px;
+    font-weight: bold;
+    opacity: 100%;
+}
+
+.loginbox input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background : transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+
+}
+
+.loginbox input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 18px;
+
+}
+
+.loginbox input[type="submit"]:hover{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+.loginbox img {
+        width:40%;
+        position:absolute;
+        top:-20px;
+        left:100px;
+}
+.glasseffect {
+    background-color: rgba(256,192,104,0.25);
+    backdrop-filter: blur(9px);
+    margin: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 20px;
+}
+
+@keyframes fadein{
+    0% {opacity:0;}
+    25% {opacity :20 %;}
+    50% {opacity : 40%;}
+    100% {opacity : 100%; }
+}
+
+@keyframes slideintop{
+    
+    75% {top:55%;}
+    100%{top: 50%;}
+}
+
+.Tiles {
+    width: 384px;
+    height: 216px;
+    overflow-x:auto;
+    
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    transition: width 2s height 2s;
+    transition-delay: 0.1s;
+    transition-timing-function: ease ease-in;
+    transition-duration: 1s;
+    animation-name: slideintop, fadein;
+    animation-duration: 1s;
+}
+
+    .Tiles:hover {
+        width: 391px;
+        height: 220px;
+    }

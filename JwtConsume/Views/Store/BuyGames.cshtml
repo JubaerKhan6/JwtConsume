@@ -1,0 +1,49 @@
+﻿@model JwtConsume.Models.VideoGames
+
+@{
+    ViewData["Title"] = "BuyGames";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+<br />
+<br />
+<hr />
+<main class="containerbuy">
+    @{
+        var id = Model.Id;
+        var imagestring = Model.Image;
+        var imagepath = "~/lib/Images/" + Model.Image;
+    }
+
+
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column2">
+        <img src=@imagepath asp-append-version="true" />
+    </div>
+
+
+    <!-- Right Column -->
+    <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+            <span>Game</span>
+            <h1 class="text-warning">@Html.DisplayFor(model => model.Name)</h1>
+            <h2 class="text-success">@Html.DisplayFor(model => model.Developer) </h2>
+            <h4 class ="text-warning">Released : @Html.DisplayFor(model => model.Released)</h4>
+            <h3 class="text-warning"> Rating : @Html.DisplayFor(model => model.Rating)</h3>
+            <p class="text-light">@Html.DisplayFor(model => model.Description)</p>
+
+        </div>
+
+
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+            <span class="text-success">70$</span>
+            <a asp-action="OrderGames" asp-route-id=@id class="cart-btn">Buy</a>
+        </div>
+    </div>
+
+</main>
+<a asp-action="Index2" class="btn btn-danger"> Back </a>
+<a asp-action="GetGamesUser" class="btn btn-warning" > Games </a>

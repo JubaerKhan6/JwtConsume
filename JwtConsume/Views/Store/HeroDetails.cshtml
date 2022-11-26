@@ -1,0 +1,42 @@
+﻿@model JwtConsume.Models.Superheroes
+
+@{
+    ViewData["Title"] = "BuyGames";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<main class="containerbuy">
+    @{
+        var id = Model.Id;
+        var imagestring = Model.Image;
+        var imagepath = "~/lib/Images/Supe/" + Model.Image;
+    }
+
+
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        <img src=@imagepath asp-append-version="true"/>
+    </div>
+
+
+    <!-- Right Column -->
+    <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+            <span>Super Hero</span>
+            <h1 class="text-warning">@Html.DisplayFor(model => model.Name)</h1>
+            <h2 class="text-success">@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) </h2>
+            
+            <h3 class="text-warning"> Powers: @Html.DisplayFor(model => model.Powers)</h3>
+            <p class="text-light font-big">@Html.DisplayFor(model => model.Description)</p>
+
+        </div>
+
+
+
+
+</main>
+<a asp-action="ViewHeroes" class="btn btn-danger"> Back </a>
+<a asp-action="Index2" class="btn btn-warning"> Home </a>
+

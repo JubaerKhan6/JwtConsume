@@ -1,9 +1,9 @@
 ﻿
 @{
     ViewData["Title"] = "Getname Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<p> Your name is </p>
-<br />
-<h2> @TempData["message"] </h2>
+<p align="center" class="text-light"> Your name is </p>
+<h2 align="center" style="color: blue"> @TempData["message"] </h2>
+<a asp-controller="Dashboard" asp-action="Index" class="btn btn-danger">Back</a>

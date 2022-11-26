@@ -10,6 +10,7 @@ namespace JwtConsume.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly string host = "https://localhost:44393";
+        public string? accesstoken;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -29,8 +30,10 @@ namespace JwtConsume.Controllers
                 string jsonData = JsonConvert.SerializeObject(user);
                 StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
                 string url = $"{host}/api/Auth/login";
+                string url2 = $"{host}/api/Auth/show-roles";
 
-               
+
+
 
                 using (var response = await client.PostAsync(url, stringContent))
 
@@ -55,8 +58,25 @@ namespace JwtConsume.Controllers
                         return Redirect("~/Home/Index");
                     }
                     HttpContext.Session.SetString("JWTToken", token);
+
                 }
-                return Redirect("~/Dashboard/Index");
+                using (var response = await client.GetAsync(url2))
+
+                {
+                    string role = await response.Content.ReadAsStringAsync();
+                    bool compare = role.Contains("Admin");
+
+                    if (compare)
+                    {
+                        
+                        return Redirect("~/Store/Index");
+                    }
+                    
+
+                }
+
+
+                return Redirect("~/Store/Index2");
             }
         }
 
@@ -87,7 +107,7 @@ namespace JwtConsume.Controllers
 
                     TempData["message"] = token;
                 }
-                return Redirect("~/Home/Register");
+                return Redirect("~/Home");
             }
 
         }

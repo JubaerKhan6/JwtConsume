@@ -1,0 +1,71 @@
+﻿@model JwtConsume.Models.Movieget
+
+@{
+    ViewData["Title"] = "OrderMovie";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+@{
+    var imagestring = Model.Image;
+    var imagepath = "~/lib/Images/" + Model.Image;
+}
+
+
+<h1 class="text-warning font-big">Order Details</h1>
+<h4 class="text-warning font-small">Confirm your Movie order</h4>
+
+<main class=".containerbuy center">
+    
+    <hr />
+   <div>
+      <dl class="text-warning">
+            <div class="row">   
+                <dt class = "col-sm-10" >
+                <img src=@imagepath asp-append-version="true" class="Tiles2"/>
+                </dt>
+                <dd><span class="text-success" style="font-size : 48px;">60$</span></dd>
+            </div>
+     
+
+        
+        <dt class = "col-sm-2">
+           Product Id
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+            <dt class="col-sm-4">
+                ETA
+            </dt>
+            <dd>2-3 Days</dd>
+            <dt class="col-sm-4">
+                Payment:
+            </dt>
+            <dd>Cash on Delivery</dd>
+
+
+      </dl>
+        <a asp-action="Index2" class="btn btn-danger">Back</a>
+        <a asp-action="ConfirmOrder" class="cart-btn">Confirm Order</a>
+   </div>
+    <div>
+
+        
+    </div>
+
+</main>
+
+

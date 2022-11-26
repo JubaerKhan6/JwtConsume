@@ -1,0 +1,49 @@
+﻿@model JwtConsume.Models.Movieget
+
+@{
+    ViewData["Title"] = "BuyMovie";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+<br />
+<br />
+<hr />
+<main class="containerbuy">
+    @{
+        var id = Model.Id;
+        var imagestring = Model.Image;
+        var imagepath = "~/lib/Images/" + Model.Image;
+    }
+        
+
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        <img src=@imagepath asp-append-version="true" />
+    </div>
+
+    
+    <!-- Right Column -->
+    <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+            <span>MOVIE</span>
+                <h1 class="text-warning">@Html.DisplayFor(model => model.Name)</h1>
+                <h2 class="text-warning">Director : @Html.DisplayFor(model => model.Director)</h2>
+                <h3 class="text-warning"> Rating : @Html.DisplayFor(model => model.Rating)</h3>
+                <p class="text-light">@Html.DisplayFor(model => model.Description)</p>
+                
+        </div>
+
+       
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+            <span class="text-success">60$</span>
+            <a asp-action="OrderMovie" asp-route-id=@id class="cart-btn">Buy</a>
+        </div>
+    </div>
+   
+</main>
+<a asp-action="GetMoviesUser" class="btn btn-danger"> Movies </a>
+<a asp-action="Index2" class="btn btn-warning"> Home </a>
+

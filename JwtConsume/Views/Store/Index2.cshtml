@@ -1,0 +1,112 @@
+﻿@using JwtConsume.Models;
+@model Index2Vm
+
+@{
+    ViewData["Title"] = "User Index";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+<link rel="stylesheet" href="~/css/store.css" asp-append-version="true" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="dynamic">
+    <div class="din">
+     <h2 class="text-warning fdin">Binge Play, Binge Watch!</h2>
+    </div>
+    
+    <div class="center fdin">
+        <div id="vgCaraousel" class="carousel slide carasize Media" data-ride="carousel" data-interval="2200">
+        <ol class="carousel-indicators">
+            <li data-target="#vgCarousel" data-slide-to="0" class="active"> </li>
+                @{
+                    var c = 1;
+                    @foreach(var game in Model.VideoGames){
+                    
+                    <li data-target="#vgCarousel" data-slide-to=@c++></li>
+                }
+            }
+       
+        </ol>
+        <div class="carousel-inner">
+                <div class="item active">
+                    <a asp-action="GetGamesUser">
+                        <img src="~/lib/Images/CarouselCover.png" alt="cover" asp-append-version="true" />
+                    </a>
+                </div>
+          @foreach(var game in Model.VideoGames){
+                    var imagepath = "~/lib/Images/" + game.Image;
+                    <div class="item">
+                        <a asp-action="BuyGames" asp-route-id=@game.Id>
+                            <img src=@imagepath alt=@game.Name asp-append-version="true" />
+                        </a>
+                    </div>
+          }
+           
+           @* <div class="item">
+                <a asp-action="GetGamesUser">
+                <img src="~/lib/Images/battlefield 1.jpg" alt="bf" />
+                    </a>
+            </div>
+            <div class="item">
+                <a asp-action="GetGamesUser">
+                <img src="~/lib/Images/Assassin.png" alt="unc" />
+                    </a>
+            </div>
+            <div class="item">
+                <a asp-action="GetGamesUser">
+                <img src="~/lib/Images/Mw2.jpg" alt="cod" />
+                    </a>
+            </div>
+            <div class="item">
+                <a asp-action="GetGamesUser">
+                <img src="~/lib/Images/Spiderman.jpg" alt="unc" />
+                </a>
+            </div>*@
+           
+        </div>
+        
+
+            <a class="left carousel-control" href="#vgCaraousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+        <a class="right carousel-control" href="#vgCaraousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    </div>
+    
+<hr />
+
+    <div class= "Media2" style="overflow-y:hidden">
+        <h3 class="text-danger font-big">Movies</h3>
+        @foreach (var item in Model.Movies)
+         {
+            var imagepath = "~/lib/Images/" + @item.Image;
+        
+         
+            <td >
+                    <a asp-action="BuyMovie" asp-route-id="@item.Id"><img src="@imagepath" asp-append-version="true" class="Tiles2"> </a>
+            </td>
+
+
+          
+
+        
+        }
+    </div>
+
+    <h1> @TempData["message"]</h1>
+
+    <hr />
+    <br />
+    
+</div>
+
+
